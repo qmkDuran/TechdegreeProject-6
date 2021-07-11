@@ -70,10 +70,10 @@ const checkWin = () => {
     const liLetter = document.querySelectorAll('li.letter');
     const liShow = document.querySelectorAll('li.show');
     if (liLetter.length === liShow.length) {
-        overlay.className = 'lose';
+        overlay.className = 'win';
         overlay.style.display = 'flex';
         overlay.querySelector('.title').textContent = 'Great Job!';
-        resizeTo();
+        reset();
     } else if (missed > 4) {
         overlay.className = 'lose';
         overlay.style.display = 'flex';
@@ -86,14 +86,12 @@ const checkWin = () => {
 
 qwerty.addEventListener('click', (event) => {
     if (event.target.tagName !=='BUTTON' || event.target.className == 'chosen'){
-        alert('Please click a key that has not been selected')
     }
     else if(event.target.tagName == 'BUTTON'){
         const keyPressed = event.target.textContent;
         event.target.className = 'chosen';
         checkLetter(keyPressed);
     }
-   
 });
 
 //RESET FUNCTION
